@@ -1,0 +1,59 @@
+<sdf version='1.4'>
+  <model name='warehouse'>
+    <link name='base_link'>
+      <pose>0 0 2 1.570796327 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>2000</mass>
+        <inertia>
+          <ixx>0.736687</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.18658</iyy>
+          <iyz>0</iyz>
+          <izz>-0.550408</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose>-0.0127 0.6096 -0.3048 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://warehouse/meshes/StorageRack.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose>-0.0127 0.6096 -0.3048 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://warehouse/meshes/StorageRack.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Grey</name>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='base_joint' type='revolute'>
+      <child>base_link</child>
+      <parent>world</parent>
+      <axis>
+        <limit>
+          <lower>0</lower>
+          <upper>0</upper>
+        </limit>
+        <dynamics>
+          <damping>0</damping>
+        </dynamics>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+  </model>
+</sdf>
